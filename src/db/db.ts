@@ -25,12 +25,12 @@ export const db = new DebtyDatabase();
 // Default initial settings
 export const DEFAULT_SETTINGS: AppSettings = {
   id: 'app_settings',
-  defaultCurrency: 'USD',
+  defaultCurrency: 'THB',
   isPinEnabled: false,
   biometricEnabled: false,
   isPrivacyMode: false,
   theme: 'system',
-  userName: 'Alex Carter',
+  userName: 'User',
   enableSound: true,
   autoLockMinutes: 5,
 };

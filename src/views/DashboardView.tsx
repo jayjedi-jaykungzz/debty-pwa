@@ -245,29 +245,32 @@ export const DashboardView: React.FC = () => {
           </div>
         )}
 
-        {/* Empty State / 1-Click Sample Data Banner */}
+        {/* Empty State when no debts recorded */}
         {transactions.length === 0 && (
-          <div className="p-6 rounded-3xl bg-ios-card-light dark:bg-ios-card-dark border border-black/5 dark:border-white/5 text-center shadow-ios-card space-y-3">
-            <div className="w-14 h-14 rounded-full bg-ios-blue/10 text-ios-blue flex items-center justify-center mx-auto">
-              <Sparkles className="w-7 h-7" />
+          <div className="p-7 rounded-3xl bg-ios-card-light dark:bg-ios-card-dark border border-black/5 dark:border-white/5 text-center shadow-ios-card space-y-4">
+            <div className="w-16 h-16 rounded-full bg-ios-blue/10 text-ios-blue flex items-center justify-center mx-auto">
+              <Plus className="w-8 h-8 stroke-[2.5]" />
             </div>
-            <h3 className="text-base font-bold text-ios-text-light dark:text-ios-text-dark">
-              No debts recorded yet
-            </h3>
-            <p className="text-xs text-ios-text-secondaryLight dark:text-ios-text-secondaryDark max-w-xs mx-auto">
-              Start tracking money you lent to friends or borrowed from colleagues, or load sample data to explore.
-            </p>
-            <button
-              type="button"
-              onClick={async () => {
-                haptics.impactMedium();
-                await seedSampleData(true);
-                haptics.notificationSuccess();
-              }}
-              className="px-5 py-2.5 rounded-xl bg-ios-blue text-white text-xs font-bold shadow-ios-glow-blue active:scale-95 transition-all"
-            >
-              Load Sample Data
-            </button>
+            <div>
+              <h3 className="text-base font-bold text-ios-text-light dark:text-ios-text-dark">
+                No debts recorded yet
+              </h3>
+              <p className="text-xs text-ios-text-secondaryLight dark:text-ios-text-secondaryDark max-w-xs mx-auto mt-1 leading-relaxed">
+                Ready to track your debts and credits. Tap the button below to record your first loan.
+              </p>
+            </div>
+            <div className="flex gap-2 justify-center pt-1">
+              <button
+                type="button"
+                onClick={() => {
+                  haptics.impactLight();
+                  openAddTransaction('LENT');
+                }}
+                className="px-5 py-3 rounded-2xl bg-ios-blue text-white text-xs font-bold shadow-ios-glow-blue active:scale-95 transition-all"
+              >
+                + Record Money Lent
+              </button>
+            </div>
           </div>
         )}
 

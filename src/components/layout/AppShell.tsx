@@ -25,13 +25,9 @@ export const AppShell: React.FC = () => {
   const settings = useLiveQuery(() => db.settings.get('app_settings'));
 
   useEffect(() => {
-    // Initialize DB defaults and seed if first run
+    // Initialize DB defaults (categories & settings) with clean empty debts
     const setup = async () => {
       await initDatabaseDefaults();
-      const peopleCount = await db.people.count();
-      if (peopleCount === 0) {
-        await seedSampleData(false);
-      }
     };
     setup();
   }, []);
